@@ -11,7 +11,8 @@ class Solution:
         #Get the node position 
         #We want to set the tail of list two to the next of this node 
         secondNode = self.findNodeByIndex(list1, b)
-        
+
+        #Set the firstNode's next to head of the other list
         headOfSecondList = list2 
         firstNode.next = headOfSecondList 
         #Traverse to second list's tail 
