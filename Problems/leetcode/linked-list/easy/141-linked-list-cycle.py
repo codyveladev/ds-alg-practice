@@ -14,14 +14,11 @@ class Solution:
         slow = head.next 
         fast = head.next.next
         #Find where the nodes overlap each other
-        while slow != fast:
-            if fast is None or fast.next is None: 
-                return False
-            slow = slow.next 
-            fast = fast.next.next 
-        #Find where they overlap again and it will be the origin of the loop
-        slow = head 
-        while slow != fast: 
-            slow = slow.next
-            fast = fast.next 
-        return slow
+        #If they ever equal each other we have a loop
+        while fast and fast.next:
+            if slow == fast: 
+                return True
+            else: 
+                slow = slow.next
+                fast = fast.next.next
+        return False
