@@ -30,12 +30,8 @@ class Solution:
                 second = new_node
                 #remove connect
                 prev.next = first.next
-                #Increment pointers
-                prev = first 
-                first = first.next
-                index += 1      
-            else: 
-                prev = first
-                first = first.next
-                index += 1
+            #Increment pointers
+            prev = first
+            first = first.next
+            index += 1
         return head
