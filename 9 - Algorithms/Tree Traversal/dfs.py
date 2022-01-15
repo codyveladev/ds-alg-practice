@@ -7,6 +7,7 @@ class Node:
 class BST: 
     def __init__(self):
         self.root = None
+    
     def insert(self, value): 
         new_node = Node(value)
         if self.root is None: 
@@ -28,6 +29,7 @@ class BST:
                     temp.right = new_node
                     return True 
                 temp = temp.right 
+    
     def contains(self, value): 
         temp = self.root 
         while temp is not None:
@@ -40,29 +42,59 @@ class BST:
                 #go left 
                 temp = temp.left 
         return False 
+    
     def get_min(self, curr_node):
         while curr_node.left is not None: 
             curr_node = curr_node.left
         return curr_node
+    
     def get_max(self, curr_node): 
         while curr_node.left is not None: 
             curr_node = curr_node.right
         return curr_node.value
+    
+    def dfs_pre_order(self):
+        results = []
+        def traverse(current_node): 
+            results.append(current_node.value)
+            if current_node.left is not None: 
+                traverse(current_node.left)
+            if current_node.right is not None: 
+                traverse(current_node.right)
+        traverse(self.root)
+        return results
+    
+    def dfs_post_order(self): 
+        results = []
+        def traverse(current_node): 
+            if current_node.left is not None: 
+                traverse(current_node.left)
+            if current_node.right is not None: 
+                traverse(current_node.right)
+            results.append(current_node.value)
+        traverse(self.root)
+        return results
+    
+    def dfs_in_order(self): 
+        results = []
+        def traverse(current_node): 
+            if current_node.left is not None: 
+                traverse(current_node.left)
+            results.append(current_node.value)
+            if current_node.right is not None: 
+                traverse(current_node.right)
+        traverse(self.root)
+        return results
 
 
-        
 my_bst = BST()
 print(my_bst.root)
-my_bst.insert(20)
-my_bst.insert(10)
-my_bst.insert(15)
-my_bst.insert(30)
-my_bst.insert(19)
-my_bst.insert(89)
-my_bst.insert(1)
-my_bst.insert(25)
+my_bst.insert(47)
+my_bst.insert(21)
+my_bst.insert(76)
+my_bst.insert(18)
+my_bst.insert(27)
+my_bst.insert(52)
+my_bst.insert(82)
 
-print(my_bst.get_min(my_bst.root.right))
-
-print(my_bst.contains(90)) 
-
+print(my_bst.dfs_in_order())
