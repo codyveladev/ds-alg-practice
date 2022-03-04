@@ -7,7 +7,6 @@ class Solution:
         count = 0
         result = 0
         for i in range(1, len(nums)): 
-            #Using memoization
             new_diff = nums[i] - nums[i - 1]
             if curr_diff != new_diff: 
                 curr_diff = new_diff
